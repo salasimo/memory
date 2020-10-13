@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main {
+    width: 100%;
+}
+.game {
+    width: 480px;
+    height: 480px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 15px;
+    row-gap: 15px;
+    /* grid-template-areas:
+        "c1 c2 c3"
+        "c4 c5 c6"
+        "c7 c8 c9"; */
+}
+.card {
+    border: 1px solid red;
+}
+
+.card-1 {
+    grid-area: c1;
+}
+.card-2 {
+    grid-area: c2;
+}
+.card-3 {
+    grid-area: c3;
+}
+.card-4 {
+    grid-area: c4;
+}
+.card-5 {
+    grid-area: c5;
+}
+.card-6 {
+    grid-area: c6;
+}
+.card-7 {
+    grid-area: c7;
+}
+.card-8 {
+    grid-area: c8;
+}
+.card-9 {
+    grid-area: c9;
+}
