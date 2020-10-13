@@ -20,9 +20,6 @@ main {
         "c4 c5 c6"
         "c7 c8 c9"; */
 }
-.card {
-    border: 1px solid red;
-}
 
 .card-1 {
     grid-area: c1;
@@ -50,4 +47,13 @@ main {
 }
 .card-9 {
     grid-area: c9;
+}
+
+.card-front,
+.card-back {
+    font-size: 40px;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
