@@ -1,61 +1,53 @@
-//Set random cards order
-rand = Math.floor(Math.random() * 10);
-shakeCards(rand);
+// ****** Setting cards *******
 
-function shakeCards(rand) {
-    switch (rand) {
-        case 0:
-            $(".game").css({
-                "grid-template-areas": '"c2 c4 c9" "c6 c5 c1" "c3 c7 c8"',
-            });
-            break;
-        case 1:
-            $(".game").css({
-                "grid-template-areas": '"c1 c3 c9" "c8 c5 c2" "c4 c6 c7"',
-            });
-            break;
-        case 2:
-            $(".game").css({
-                "grid-template-areas": '"c3 c2 c4" "c9 c5 c1" "c6 c7 c8"',
-            });
-            break;
-        case 3:
-            $(".game").css({
-                "grid-template-areas": '"c8 c4 c9" "c1 c5 c7" "c2 c6 c3"',
-            });
-            break;
-        case 4:
-            $(".game").css({
-                "grid-template-areas": '"c1 c2 c9" "c3 c5 c4" "c7 c8 c6"',
-            });
-            break;
-        case 5:
-            $(".game").css({
-                "grid-template-areas": '"c6 c1 c2" "c4 c5 c9" "c7 c3 c8"',
-            });
-            break;
-        case 6:
-            $(".game").css({
-                "grid-template-areas": '"c8 c3 c1" "c2 c5 c9" "c4 c7 c6"',
-            });
-            break;
-        case 7:
-            $(".game").css({
-                "grid-template-areas": '"c1 c2 c4" "c7 c5 c6" "c3 c9 c8"',
-            });
-            break;
-        case 8:
-            $(".game").css({
-                "grid-template-areas": '"c6 c2 c9" "c8 c5 c3" "c7 c1 c4"',
-            });
-            break;
-        case 9:
-            $(".game").css({
-                "grid-template-areas": '"c7 c1 c6" "c8 c5 c2" "c3 c9 c4"',
-            });
-            break;
+orderCards = [];
+
+for (let i = 1; i <= 8; ) {
+    var rand = randomIntFromInterval(1, 9);
+    if (!orderCards.includes(rand) && rand != 5) {
+        orderCards.push(rand);
+        i++;
     }
 }
+
+var randomCardsStyle =
+    "'c" +
+    orderCards[0] +
+    " " +
+    "c" +
+    orderCards[1] +
+    " " +
+    "c" +
+    orderCards[2] +
+    "'" +
+    " " +
+    "'c" +
+    orderCards[3] +
+    " " +
+    "c5" +
+    " " +
+    "c" +
+    orderCards[4] +
+    "'" +
+    " " +
+    "'c" +
+    orderCards[5] +
+    " " +
+    "c" +
+    orderCards[6] +
+    " " +
+    "c" +
+    orderCards[7] +
+    "'";
+
+$(".game").css("grid-template-areas", randomCardsStyle);
+
+function randomIntFromInterval(min, max) {
+    // Random - min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// ******* In game *********
 
 var status = 0;
 var first = true;
@@ -67,7 +59,7 @@ var secondCard;
 
 $(".card").on("click", function () {
     if (wait == false) {
-        if ($(this).hasClass("flipped")) {
+        if ($(this).hasClass("flipped") || $(this).hasClass("done")) {
             return;
         }
 
@@ -93,6 +85,14 @@ $(".card").on("click", function () {
 function checkGame() {
     if (firstCardType == secondCardType) {
         status++;
+        firstCard.addClass("done");
+        firstCard.removeClass("flipped");
+        firstCard.find(".card-front").addClass("hidden");
+        firstCard.find(".card-done").removeClass("hidden");
+        secondCard.addClass("done");
+        secondCard.removeClass("flipped");
+        secondCard.find(".card-front").addClass("hidden");
+        secondCard.find(".card-done").removeClass("hidden");
         wait = false;
     } else {
         firstCard.removeClass("flipped");

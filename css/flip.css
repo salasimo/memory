@@ -18,7 +18,8 @@
 }
 
 .card-front,
-.card-back {
+.card-back,
+.card-done {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -27,12 +28,33 @@
 }
 
 .card-front {
-    background-color: #bbb;
-    color: black;
+    background-color: rgb(24, 18, 112);
+    color: white;
 }
 
 .card-back {
-    background-color: #2980b9;
+    background-color: #c43346;
     color: white;
     transform: rotateY(180deg);
+}
+
+.card-done {
+    background-color: #a4c433;
+    color: white;
+}
+
+/* Aggiunte a Flip */
+
+.card-front,
+.card-back,
+.card-done {
+    font-size: 40px;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none !important;
 }

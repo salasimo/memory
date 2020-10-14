@@ -48,12 +48,3 @@ main {
 .card-9 {
     grid-area: c9;
 }
-
-.card-front,
-.card-back {
-    font-size: 40px;
-    font-family: sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
